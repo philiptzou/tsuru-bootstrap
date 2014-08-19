@@ -14,14 +14,18 @@ Vagrant.configure("2") do |config|
     override.vm.box = "dummy"
     override.vm.box_url = "https://raw.githubusercontent.com/mitchellh/vagrant-aws/master/dummy.box"
 
-    override.ssh.username = "ubuntu"
-    override.ssh.private_key_path = ENV["AWS_PRIVATE_KEY_PATH"]
+    override.ssh.username = "guokr"
+    #override.ssh.private_key_path = ENV["AWS_PRIVATE_KEY_PATH"]
 
-    aws.access_key_id = ENV["AWS_ACCESS_KEY_ID"]
-    aws.secret_access_key = ENV["AWS_SECRET_ACCESS_KEY"]
-    aws.keypair_name = ENV["AWS_KEYPAIR_NAME"]
-    aws.ami = ENV["AWS_AMI"]
-    aws.region = ENV["AWS_REGION"]
+    aws.access_key_id = ENV["AWS_ACCESS_KEY"]
+    aws.secret_access_key = ENV["AWS_SECRET_KEY"]
+    aws.keypair_name = "macbook"
+    aws.ami = "ami-c5a7e2f5"
+    aws.region = "us-west-2"
+    aws.instance_type = "t2.medium"
+    aws.security_groups = ["sg-dff472ba"]
+    aws.subnet_id = "subnet-665f7220"
+    aws.associate_public_ip = true
     aws.instance_ready_timeout = 300
     aws.terminate_on_shutdown = true
     aws.tags = {
